@@ -1,3 +1,10 @@
+This simple Next.js app shows you how to use ComputeSDK to create sandboxes with E2B and run a simple Vite app inside of the sandbox.
+We used E2B for this example, but you can use any cloud provider (Daytona.io, Modal, Blaxel, CodeSandbox, Railway).
+Go here for the [step-by-step instructions](https://www.computesdk.com/blog/how-to-run-your-first-e2b-sandbox/).
+
+You will need to [register with ComputeSDK](https://console.computesdk.com/register) and generate an API key to create sandboxes.
+You will also need an API key from E2B, Daytona, Blaxel, or some another one of our [supported providers](https://www.computesdk.com/docs/providers/more/).
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
@@ -17,8 +24,6 @@ bun dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Learn More
 
