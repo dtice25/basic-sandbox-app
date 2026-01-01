@@ -1,20 +1,12 @@
 import { NextResponse } from 'next/server';
-import { createCompute } from 'computesdk';
-import { e2b } from '@computesdk/e2b';
+import { compute } from 'computesdk';
 
 export async function POST() {
-  const compute = createCompute({
-    provider: e2b({
-      apiKey: process.env.E2B_API_KEY!,
-      timeout: 300000, //5 minutes for testing
-    }),
-    apiKey: process.env.COMPUTESDK_API_KEY,
-  });
 
   const sandbox = await compute.sandbox.create();
 
   // Create basic Vite React app
-  await sandbox.runCommand('npm', ['create', 'vite@5', 'app', '--', '--template', 'react']);
+  await sandbox.runCommand('npm create vite@5 app -- --template react');
 
   // Custom vite.config.js to allow access to sandbox at port 5173
   const viteConfig = `import { defineConfig } from 'vite'
@@ -34,11 +26,13 @@ export async function POST() {
   await sandbox.filesystem.writeFile('app/vite.config.js', viteConfig);
   
   // Install dependencies
-  await sandbox.runCommand('cd app && npm install')
+  await sandbox.runCommand('npm install', {
+    cwd: 'app',
+  })
   
   // Start dev server
-  sandbox.runCommand('cd app && npm run dev', [], {
-    background: true,
+  sandbox.runCommand('npm run dev', {
+    cwd: 'app',
   });
 
   // Get preview URL
